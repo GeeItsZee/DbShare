@@ -1,0 +1,13 @@
+# DbShare Configuration File
+
+# List of data source that plugins can access.
+Databases:
+
+#  # Name of the data source
+#  Main:
+#    # Username for connecting to the database.
+#    Username: mc
+#    # Password for connecting to the database.
+#    Password: mc
+#    # This should have three parts: the main URL, the port number, and database name.
+#    URL: localhost:3306/mc
