@@ -1,4 +1,4 @@
 name: DbShare
-main: com.gmail.tracebachi.DbShare.Spigot.DbShare
+main: com.gmail.tracebachi.DbShare.Bungee.DbShare
 version: ${project.version}
 author: Trace Bachi (tracebachi@gmail.com, BigBossZee)

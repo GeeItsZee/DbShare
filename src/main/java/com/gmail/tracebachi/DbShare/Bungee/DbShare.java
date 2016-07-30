@@ -1,28 +1,27 @@
-package com.gmail.tracebachi.DbShare;
+package com.gmail.tracebachi.DbShare.Bungee;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.plugin.java.JavaPlugin;
+import net.md_5.bungee.api.plugin.Plugin;
+import net.md_5.bungee.config.Configuration;
+import net.md_5.bungee.config.ConfigurationProvider;
+import net.md_5.bungee.config.YamlConfiguration;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by Trace Bachi (tracebachi@gmail.com, BigBossZee) on 1/23/16.
  */
-public class DbShare extends JavaPlugin
+public class DbShare extends Plugin
 {
+    private Configuration config;
     private static HashMap<String, HikariDataSource> sources;
-
-    @Override
-    public void onLoad()
-    {
-        saveDefaultConfig();
-    }
 
     @Override
     public synchronized void onEnable()
@@ -48,8 +47,8 @@ public class DbShare extends JavaPlugin
 
     private void createDataSources()
     {
-        ConfigurationSection section = getConfig().getConfigurationSection("Databases");
-        Set<String> sourceNames = section.getKeys(false);
+        Configuration section = config.getSection("Databases");
+        Collection<String> sourceNames = section.getKeys();
 
         for(String sourceName : sourceNames)
         {
@@ -83,7 +82,7 @@ public class DbShare extends JavaPlugin
         }
     }
 
-    private void closeDataSources()
+    private synchronized void closeDataSources()
     {
         for(Map.Entry<String, HikariDataSource> entry : sources.entrySet())
         {
@@ -115,5 +114,24 @@ public class DbShare extends JavaPlugin
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
         config.addDataSourceProperty("useServerPrepStmts", "true");
         return new HikariDataSource(config);
+    }
+
+    private void reloadConfig()
+    {
+        try
+        {
+            File file = ConfigUtil.saveResource(this, "bungee-config.yml", "config.yml");
+            config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(file);
+
+            if(config == null)
+            {
+                ConfigUtil.saveResource(this, "config.yml", "config.yml", true);
+            }
+        }
+        catch(IOException e)
+        {
+            getLogger().severe("Failed to load configuration file.");
+            e.printStackTrace();
+        }
     }
 }
