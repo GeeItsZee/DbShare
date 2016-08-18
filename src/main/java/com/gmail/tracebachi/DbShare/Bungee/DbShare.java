@@ -120,7 +120,7 @@ public class DbShare extends Plugin
     {
         try
         {
-            File file = ConfigUtil.saveResource(this, "bungee-config.yml", "config.yml");
+            File file = ConfigUtil.saveResource(this, "config.yml", "config.yml");
             config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(file);
 
             if(config == null)
