@@ -1,8 +1,9 @@
+###############################################################################
 # DbShare Configuration File
+###############################################################################
 
 # List of data source that plugins can access.
 Databases:
-
 #  # Name of the data source
 #  Main:
 #    # Username for connecting to the database.

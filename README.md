@@ -1,15 +1,15 @@
 # DbShare
-DbShare is a management plugin for HikariDataSources. By building the
-data sources once and reusing them in various plugins as needed, the
-programmer can save time and memory.
+DbShare is a helper plugin which allows you to build your `HikariDataSource`s once and reuse
+them across plugins.
 
 # Step One: Edit the configuration file (config.yml)
 ```yaml
+###############################################################################
 # DbShare Configuration File
+###############################################################################
 
 # List of data source that plugins can access.
 Databases:
-
   # Name of the data source
   MainDbShare:
     # Username for connecting to the database.
@@ -23,7 +23,7 @@ Databases:
 # Step Two: Use it in your plugin
 ```java
 public void updateDatabase() {
-  HikariDataSource dataSource = DbShare.getDataSource("MainDbShare");
+  HikariDataSource dataSource = DbShare.instance().getDataSource("MainDbShare");
   
   try(Connection connection = dataSource.getConnection()) {
     // Use the connection
@@ -33,8 +33,8 @@ public void updateDatabase() {
 
 # Licence ([GPLv3](http://www.gnu.org/licenses/gpl-3.0.en.html))
 ```
-DbShare - Shared HikariDataSource manager for Spigot
-Copyright (C) 2015  Trace Bachi (tracebachi@gmail.com)
+DbShare - Multiple HikariDataSource manager for Spigot
+Copyright (C) 2017 Trace Bachi (tracebachi@gmail.com)
 
 DbShare is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

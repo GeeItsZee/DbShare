@@ -1,4 +1,4 @@
 name: DbShare
-main: com.gmail.tracebachi.DbShare.Bungee.DbShare
+main: com.gmail.tracebachi.DbShare.DbShareBungeePlugin
 version: ${project.version}
-author: Trace Bachi (tracebachi@gmail.com, BigBossZee)
+author: GeeItsZee (tracebachi@gmail.com)

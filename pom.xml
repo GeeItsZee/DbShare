@@ -6,7 +6,7 @@
 
     <groupId>com.gmail.tracebachi</groupId>
     <artifactId>DbShare</artifactId>
-    <version>1.1.1</version>
+    <version>2.0.0</version>
 
     <repositories>
         <repository>
@@ -19,19 +19,19 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.8.8-R0.1-SNAPSHOT</version>
+            <version>1.10.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>net.md-5</groupId>
-            <artifactId>bungeecord-jar</artifactId>
-            <version>1.8</version>
+            <artifactId>BungeeCord</artifactId>
+            <version>1217</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-            <version>2.4.3</version>
+            <version>2.6.3</version>
         </dependency>
     </dependencies>
 
